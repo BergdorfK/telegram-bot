@@ -1,0 +1,36 @@
+databaseChangeLog:
+  - changeSet:
+      id: 1
+      author: Nikolai
+      preConditions:
+        onFail: MARK_RAN
+        preConditions:
+          - not:
+              - tableExists:
+                  tableName: car
+      changes:
+        - createTable:
+            tableName: car
+            columns:
+              - column:
+                  name: id
+                  type: BIGINT
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: model
+                  type: VARCHAR(255)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: manufacturer
+                  type: VARCHAR(255)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: year
+                  type: INTEGER
+                  constraints:
+                    nullable: false
