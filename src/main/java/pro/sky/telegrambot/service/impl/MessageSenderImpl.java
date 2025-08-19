@@ -21,7 +21,16 @@ public class MessageSenderImpl implements MessageSender {
 
     @Override
     public void send(Long chatId, String messageText) {
+        logger.info("Trying to send message '{}' to chatId {}", messageText, chatId);
+
         SendMessage sendMessage = new SendMessage(chatId, messageText);
         SendResponse response = bot.execute(sendMessage);
+
+        if (response.isOk()) {
+            logger.info("Message successfully sent to chatId {}", chatId);
+        } else {
+            logger.error("Failed to send message to chatId {}. Error: {}", chatId, response.description());
+        }
     }
+
 }
