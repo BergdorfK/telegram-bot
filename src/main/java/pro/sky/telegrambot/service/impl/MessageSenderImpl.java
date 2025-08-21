@@ -12,7 +12,7 @@ import pro.sky.telegrambot.service.MessageSender;
 @Service
 public class MessageSenderImpl implements MessageSender {
 
-    private Logger logger = LoggerFactory.getLogger(TelegramBotUpdatesListener.class);
+    private final Logger logger = LoggerFactory.getLogger(TelegramBotUpdatesListener.class);
     private final TelegramBot bot;
 
     public MessageSenderImpl(TelegramBot bot) {
